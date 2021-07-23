@@ -1,0 +1,50 @@
+from flask import Flask, render_template, request
+import comm.snowball as snow
+import util.SysUtil as sysUtil
+import time
+
+app = Flask(__name__)
+
+
+@app.route('/v1', methods=['GET', 'POST'])
+def flow():
+    symbol = request.args.get("symbol")
+    if symbol is None or symbol == '':
+        symbol = '603369'
+    arr = snow.capitalFlow(symbol, 30, 1)[0]
+    res = ''
+    for r in arr:
+        res = res + '<h10>' + str(r) + '</h10><br/>'
+    return res
+
+
+@app.route('/v2', methods=['GET', 'POST'])
+def v2():
+    stop = request.args.get("stop")
+    codes = ''
+    if codes == '':
+        codes = '002385'
+    if stop is None:
+        stop = 0
+    arr = snow.realTimeData(codes)[0]
+    res = []
+    for r in arr:
+        symbol = r['symbol']
+        percent = r['percent']
+        avg_price = round(r['avg_price'], 2)
+        plv = r['plv']
+        res.append(symbol + '->' + str(percent) + ' === avg：' + str(avg_price) + ' 偏离率：' + str(plv))
+    return render_template("./symbol.html", res=res, stop=int(stop))
+
+
+@app.route('/', methods=['GET', 'POST'])
+def v():
+    day = time.strftime("%Y-%m-%d", time.localtime())
+    res = snow.pickSymbols()
+    path = snow.draw_table(res, day+'_zf2-5,lb1.2-10,ln1-20y,hs3-10,sz100-1000y')
+    img_stream = sysUtil.get_img_stream(path)
+    return render_template('pick.html',
+                           img_stream=img_stream)
+
+
+app.run()

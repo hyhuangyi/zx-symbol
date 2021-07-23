@@ -1,0 +1,21 @@
+<html>
+<head>
+    {% if 0 == stop %}
+    <meta http-equiv="refresh" content="2;url={{ url_for('v2') }}">
+    {% endif %}
+</head>
+<body>
+
+<div class="c" id="show2">
+    <div class="header">
+        <h4>结果展示：</h4>
+        <ul>
+            {% for item in res %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
