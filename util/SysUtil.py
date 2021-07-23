@@ -59,6 +59,7 @@ def get_name_by_symbol(symbol):
 # 语音播报
 def playSymbols(symbols):
     engine = pyttsx3.init()
+    engine.setProperty('rate', 250)
     for l in symbols:
         symbol = l['symbol']
         percent = l['percent']
