@@ -12,8 +12,8 @@ import util.ZxConsts as const
 import util.SysUtil as sysUtil
 
 # 雪球token
-token = 'xq_a_token=d933d420989bdcbeaa2aec79b584f51be3446511;'
-pro = ts.pro_api('2d905bef29e52fd1b0801bc0ab6ae906fc9ac2737be2f40b27b68391')
+token = const.xq_token
+pro = ts.pro_api(const.tushare_pro_token)
 dbHelper = DBHelper()
 
 

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import comm.snowball as snow
+import zx.snowball as snow
 import util.SysUtil as sysUtil
 import time
 
