@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import zx.snowball as snow
+import const.ZxConsts as const
 import util.SysUtil as sysUtil
 import time
 
@@ -7,21 +8,9 @@ app = Flask(__name__)
 
 
 @app.route('/v1', methods=['GET', 'POST'])
-def flow():
-    symbol = request.args.get("symbol")
-    if symbol is None or symbol == '':
-        symbol = '603369'
-    arr = snow.capitalFlow(symbol, 30, 1)[0]
-    res = ''
-    for r in arr:
-        res = res + '<h10>' + str(r) + '</h10><br/>'
-    return res
-
-
-@app.route('/v2', methods=['GET', 'POST'])
-def v2():
+def v1():
     stop = request.args.get("stop")
-    codes = '002385'
+    codes = const.default_symbol
     if stop is None:
         stop = 0
     arr = snow.realTimeData(codes)[0]
@@ -36,10 +25,10 @@ def v2():
 
 
 @app.route('/', methods=['GET', 'POST'])
-def v():
+def home():
     day = time.strftime("%Y-%m-%d", time.localtime())
     res = snow.pickSymbols()
-    path = snow.draw_table(res, day+'_zf_lb_ln_hs_sz')
+    path = snow.draw_table(res, day + '_zf_lb_ln_hs_sz')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',
                            img_stream=img_stream)
