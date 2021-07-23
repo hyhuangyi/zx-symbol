@@ -48,7 +48,7 @@ def get_name_by_symbol(symbol):
     if len(symbol) == 8:
         symbol = symbol[-6:]
     elif len(symbol) != 6 and len(symbol) != 8:
-        raise Exception('代码为啥传6位或8位')
+        raise Exception('代码传6位或8位')
     lists = dbHelper.db.select_list('select *from stock where symbol=%s', symbol[-6:])
     if len(lists) == 1:
         return lists[0][2]

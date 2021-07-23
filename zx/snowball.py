@@ -8,7 +8,7 @@ import util.HttpRequestUtil as httpUtil
 from prettytable import PrettyTable
 from util.DbUtil import DBHelper
 from PIL import Image, ImageDraw, ImageFont
-import util.ZxConsts as const
+import const.ZxConsts as const
 import util.SysUtil as sysUtil
 
 # 雪球token

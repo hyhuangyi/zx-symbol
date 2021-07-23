@@ -1,6 +1,6 @@
 import pymysql
 from functools import wraps
-import util.ZxConsts as const
+import const.ZxConsts as const
 
 
 def singleton(cls):

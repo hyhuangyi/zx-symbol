@@ -5,9 +5,10 @@ import base64
 import urllib.parse
 import requests
 import json
+import const.ZxConsts as const
 
-URL = "https://oapi.dingtalk.com/robot/send?access_token=31d756dc11a9fa23d850879416cb1e7c097a2def004f62d81b274a8970ae8638"
-SECRET = "SECf495fcaaf44bfae5bb95eee177adf9545d3ac4ae670920bc607d46514ff6d274"
+URL = const.dingding_urL
+SECRET = const.dingding_secret
 
 
 def get_timestamp_sign():

@@ -1,7 +1,7 @@
 import zx.snowball as snow
 import time
 import util.DingdingNotifyUtil as notifyUtil
-import util.ZxConsts as const
+import const.ZxConsts as const
 import util.SysUtil as sysUtil
 codes = '000858,300418'
 time_sleep = 5
