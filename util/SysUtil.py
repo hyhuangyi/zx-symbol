@@ -67,9 +67,9 @@ def playSymbols(symbols):
         name = get_name_by_symbol(symbol)
         zd = ''
         if percent > 0:
-            zd = "涨"
+            zd = "红"
         else:
-            zd = "跌"
+            zd = "绿"
         engine.say(name + "," + zd + "百分之" + str(abs(percent)))
     engine.runAndWait()
     engine.stop()
