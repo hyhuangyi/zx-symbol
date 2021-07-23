@@ -32,4 +32,17 @@ word_cloud_font_path = 'C:\Windows\Fonts\Sitka Banner\msyh.ttc'
 # tushare token
 tushare_pro_token = '2d905bef29e52fd1b0801bc0ab6ae906fc9ac2737be2f40b27b68391'
 
+# 默认symbol
+default_symbol = '000858'
 
+# 策略
+percent_pre = 2
+percent_post = 10
+volume_ratio_pre = 1.2
+volume_ratio_post = 10
+amount_pre = 1
+amount_post = 20
+turnover_rate_pre = 3
+turnover_rate_post = 20
+market_capital_pre = 50
+market_capital_post = 1000

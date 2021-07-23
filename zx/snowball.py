@@ -18,7 +18,7 @@ dbHelper = DBHelper()
 
 
 # 获取实时数据
-def realTimeData(symbols='000858'):
+def realTimeData(symbols=const.default_symbol):
     json_dic = ball.quotec(sysUtil.complete_symbol(symbols))
     stock_list = json_dic['data']
     res = []
@@ -50,7 +50,7 @@ def realTimeData(symbols='000858'):
 
 
 # 资金流水
-def capitalFlow(symbol='000858', count=15, type=1):
+def capitalFlow(symbol=const.default_symbol, count=15, type=1):
     # 设置token
     ball.set_token(token)
     table = PrettyTable(["时间", "金额"])
@@ -77,7 +77,7 @@ def capitalFlow(symbol='000858', count=15, type=1):
 
 
 # 获取实时分笔数据
-def panKou(symbol='000858'):
+def panKou(symbol=const.default_symbol):
     # 设置token
     ball.set_token(token)
     res = ball.pankou(sysUtil.complete_symbol(symbol))
@@ -97,7 +97,7 @@ def panKou(symbol='000858'):
 
 
 # 资金成交分布
-def capitalAssort(symbol='000858'):
+def capitalAssort(symbol=const.default_symbol):
     # 设置token
     ball.set_token(token)
     res = ball.capital_assort(sysUtil.complete_symbol(symbol))
@@ -126,9 +126,11 @@ def getAllRealTimeSymbols():
     return lists
 
 
-# 选股 涨幅2-5,量比1.2-10,量能1-20亿,换手3-10,市值 100-1000亿
-def pickSymbols(percent_pre=2, percent_post=5, volume_ratio_pre=1.2, volume_ratio_post=10, amount_pre=1, amount_post=20,
-                turnover_rate_pre=3, turnover_rate_post=10, market_capital_pre=100, market_capital_post=1000):
+# 选股: 涨幅 percent,量比 volume_ratio,量能 amount,换手 turnover_rate,市值 market_capital
+def pickSymbols(percent_pre=const.percent_pre, percent_post=const.percent_post, volume_ratio_pre=const.volume_ratio_pre,
+                volume_ratio_post=const.volume_ratio_post, amount_pre=const.amount_pre, amount_post=const.amount_post,
+                turnover_rate_pre=const.turnover_rate_pre, turnover_rate_post=const.turnover_rate_post,
+                market_capital_pre=const.market_capital_pre, market_capital_post=const.market_capital_post):
     resList = getAllRealTimeSymbols()
     table = PrettyTable(["代码", "名称", "涨幅(%)", "量能(亿)", '换手率(%)', '量比', '现价',
                          '年初至今(%)', '振幅(%)', '市值(亿)'])
@@ -232,7 +234,7 @@ def draw_table(tab_info, name):
 
 
 # 画折线图 tick_spacing 密度  count 取数数量 type 1分钟级别 2日级别
-def draw_flow(symbol='000858', tick_spacing=10, count=15, type=1):
+def draw_flow(symbol=const.default_symbol, tick_spacing=10, count=15, type=1, ifShow=False):
     basePath = const.download_path
     arr = capitalFlow(symbol, count, type)[0]
     x = []
@@ -263,5 +265,6 @@ def draw_flow(symbol='000858', tick_spacing=10, count=15, type=1):
     fName = basePath + day + '_' + symbol + ".png"
     plt.savefig(fName)
     # 显示图
-    plt.show()
+    if ifShow:
+        plt.show()
     return fName

@@ -21,9 +21,7 @@ def flow():
 @app.route('/v2', methods=['GET', 'POST'])
 def v2():
     stop = request.args.get("stop")
-    codes = ''
-    if codes == '':
-        codes = '002385'
+    codes = '002385'
     if stop is None:
         stop = 0
     arr = snow.realTimeData(codes)[0]
@@ -41,7 +39,7 @@ def v2():
 def v():
     day = time.strftime("%Y-%m-%d", time.localtime())
     res = snow.pickSymbols()
-    path = snow.draw_table(res, day+'_zf2-5,lb1.2-10,ln1-20y,hs3-10,sz100-1000y')
+    path = snow.draw_table(res, day+'_zf_lb_ln_hs_sz')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',
                            img_stream=img_stream)
