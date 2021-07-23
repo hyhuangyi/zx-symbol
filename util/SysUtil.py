@@ -71,3 +71,4 @@ def playSymbols(symbols):
             zd = "跌"
         engine.say(name + "," + zd + "百分之" + str(abs(percent)))
     engine.runAndWait()
+    engine.stop()
