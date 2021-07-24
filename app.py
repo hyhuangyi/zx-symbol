@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
-import zx.snowball as snow
+import zx.Snowball as snow
+import zx.DrawPic as draw
 import const.ZxConsts as const
 import util.SysUtil as sysUtil
 import time
@@ -28,7 +29,7 @@ def v1():
 def home():
     day = time.strftime("%Y-%m-%d", time.localtime())
     res = snow.pickSymbols()
-    path = snow.draw_table(res, day + '_zf_lb_ln_hs_sz')
+    path = draw.draw_table(res, day + '_zf_lb_ln_hs_sz')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',
                            img_stream=img_stream)

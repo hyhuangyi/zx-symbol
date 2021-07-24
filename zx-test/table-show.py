@@ -1,4 +1,4 @@
-import zx.snowball as ball
+import zx.Snowball as ball
 
 percent_pre = 2
 percent_post = 5

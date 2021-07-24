@@ -3,7 +3,7 @@ mysql_host = "127.0.0.1"
 mysql_port = 3306
 mysql_user = "root"
 mysql_password = "admin"
-mysql_db = "hy"
+mysql_db = "zx"
 
 # 钉钉配置
 dingding_urL = "https://oapi.dingtalk.com/robot/send?access_token=31d756dc11a9fa23d850879416cb1e7c097a2def004f62d81b274a8970ae8638"

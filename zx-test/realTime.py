@@ -1,4 +1,4 @@
-import zx.snowball as snow
+import zx.Snowball as snow
 import time
 import util.DingdingNotifyUtil as notifyUtil
 import const.ZxConsts as const

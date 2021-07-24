@@ -47,6 +47,17 @@ class db():  # 类名和模块名一致，robot导入时不用写类名@@@@@
             # 错误回滚
             self.conn.rollback()
 
+    def delByCondition(self, del_sql, record):
+        cur = self.conn.cursor()
+        try:
+            # 示例
+            # sql = 'delete from users where username=%s'
+            # params="shuke"
+            cur.execute(del_sql, record)
+            self.conn.commit()
+        except Exception as e:
+            self.conn.rollback()
+
     def insert_one(self, insert_sql, record):
         cur = self.conn.cursor()
         try:
