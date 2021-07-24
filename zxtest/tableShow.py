@@ -15,6 +15,9 @@ if __name__ == '__main__':
     # 成交分布
     print(ball.capitalAssort(symbol)[1])
 
-    tb = ball.pickSymbols(2, 5, 1.2, 10, 1, 20,
-                          3, 20, 50, 1000, sortBy=2)
-    print(tb)
+    # 龙虎榜
+    print(ball.longHuBang('2021-07-23')[1])
+
+    # 选股
+    print(ball.pickSymbols(2, 5, 1.2, 10, 1, 20,
+                           3, 20, 50, 1000, sortBy=2))

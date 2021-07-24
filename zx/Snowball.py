@@ -120,7 +120,7 @@ def capitalAssort(symbol=const.default_symbol):
 
 # 获取龙虎榜
 # date时间形如2021-08-08
-def getLongHuBang(str_date=None):
+def longHuBang(str_date=None):
     num_date = sysUtil.str_date_to_num(str_date)
     json_dic = http.get(const.xq_long_hu_bang, params_obj={'date': num_date}, headers=const.HEADERS)
     dataList = json_dic['data']['items']
