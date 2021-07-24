@@ -37,7 +37,7 @@ def v1():
 @app.route('/v2', methods=['GET', 'POST'])
 def v2():
     day = time.strftime("%Y-%m-%d", time.localtime())
-    res = snow.pickSymbols(5, 10, 2, 10, 0.5, 20, 1, 10, 50, 2000)
+    res = snow.pickSymbols(5, 12, 2, 10, 0.5, 20, 1, 10, 50, 2000,sortBy=1)
     path = draw.draw_table(res, day + '策略2_高涨幅')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',

@@ -122,9 +122,9 @@ def getAllRealTimeSymbols():
 def pickSymbols(percent_pre=const.percent_pre, percent_post=const.percent_post, volume_ratio_pre=const.volume_ratio_pre,
                 volume_ratio_post=const.volume_ratio_post, amount_pre=const.amount_pre, amount_post=const.amount_post,
                 turnover_rate_pre=const.turnover_rate_pre, turnover_rate_post=const.turnover_rate_post,
-                market_capital_pre=const.market_capital_pre, market_capital_post=const.market_capital_post):
+                market_capital_pre=const.market_capital_pre, market_capital_post=const.market_capital_post, sortBy=1):
     resList = getAllRealTimeSymbols()
-    table = PrettyTable(["代码", "名称", "涨幅(%)", "量能(亿)", '换手率(%)', '量比', '现价',
+    table = PrettyTable(['代码', '名称', '涨幅(%)', '量能(亿)', '换手率(%)', '量比', '现价',
                          '年初至今(%)', '振幅(%)', '市值(亿)'])
     arr = []
     for l in resList:
@@ -140,10 +140,18 @@ def pickSymbols(percent_pre=const.percent_pre, percent_post=const.percent_post, 
         market_capital = round(l['market_capital'] / 100000000, 2) if l['market_capital'] is not None else 0
 
         if '退' not in l['name'] or '*ST' not in l['name']:
-            if percent_pre < percent < percent_post and volume_ratio_pre < volume_ratio < volume_ratio_post and amount_pre < amount < amount_post and turnover_rate_pre < turnover_rate < turnover_rate_post and market_capital_pre < market_capital < market_capital_post:
+            if percent_pre <= percent <= percent_post and volume_ratio_pre <= volume_ratio <= volume_ratio_post and amount_pre <= amount <= amount_post and turnover_rate_pre <= turnover_rate <= turnover_rate_post and market_capital_pre <= market_capital <= market_capital_post:
                 arr.append(l)
                 table.add_row(
                     [symbol, name, percent, amount, turnover_rate, volume_ratio, current, current_year_percent,
                      amplitude, market_capital])
-    res = table.get_string(sortby="涨幅(%)", reversesort=True)
+    if sortBy == 1:
+        sort = '涨幅(%)'
+    elif sortBy == 2:
+        sort = '年初至今(%)'
+    elif sortBy == 3:
+        sort = '量能(亿)'
+    else:
+        sort = '换手率(%)'
+    res = table.get_string(sortby=sort, reversesort=True)
     return res

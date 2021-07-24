@@ -1,16 +1,5 @@
 import zx.Snowball as ball
 
-percent_pre = 2
-percent_post = 5
-volume_ratio_pre = 1.2
-volume_ratio_post = 10
-amount_pre = 1
-amount_post = 20
-turnover_rate_pre = 3
-turnover_rate_post = 20
-market_capital_pre = 50
-market_capital_post = 1000
-
 if __name__ == '__main__':
     symbol = '300418'
 
@@ -26,6 +15,6 @@ if __name__ == '__main__':
     # 成交分布
     print(ball.capitalAssort(symbol)[1])
 
-    tb = ball.pickSymbols(percent_pre, percent_post, volume_ratio_pre, volume_ratio_post, amount_pre, amount_post,
-                          turnover_rate_pre, turnover_rate_post, market_capital_pre, market_capital_post)
+    tb = ball.pickSymbols(2, 5, 1.2, 10, 1, 20,
+                          3, 20, 50, 1000, sortBy=2)
     print(tb)
