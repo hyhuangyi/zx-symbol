@@ -1,7 +1,7 @@
-import time
 import tushare as ts
 import zx.Snowball as ball
 import const.ZxConsts as const
+import util.SysUtil as sysUtil
 from util.DbUtil import DBHelper
 
 pro = ts.pro_api(const.tushare_pro_token)
@@ -25,7 +25,7 @@ def saveAllSymbol():
 def saveStockHistory():
     insert_sql = 'INSERT INTO stock_history(symbol,name,current,percent,amplitude,amount,volume_ratio,current_year_percent,turnover_rate,market_capital,date) VALUES(%s, %s, %s, %s, %s, %s,%s, %s, %s, %s,%s)'
     del_sql = 'delete from stock_history where date=%s'
-    date = time.strftime("%Y-%m-%d", time.localtime())
+    date = sysUtil.today()
     resList = ball.getAllRealTimeSymbols()
     arr = []
     for l in resList:

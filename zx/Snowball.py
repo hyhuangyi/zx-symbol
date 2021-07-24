@@ -1,12 +1,19 @@
 import time
 import pysnowball as ball
-import util.HttpRequestUtil as httpUtil
+import util.HttpRequestUtil as http
 from prettytable import PrettyTable
 import const.ZxConsts as const
 import util.SysUtil as sysUtil
 
 # 雪球token
 token = const.xq_token
+
+
+# 获取雪球实时数据(全部symbol)
+def getAllRealTimeSymbols():
+    res = http.get(const.xq_list, headers=const.HEADERS)
+    lists = res['data']['list']
+    return lists
 
 
 # 获取实时数据
@@ -111,11 +118,34 @@ def capitalAssort(symbol=const.default_symbol):
     return res, table
 
 
-# 获取雪球实时数据(全部symbol)
-def getAllRealTimeSymbols():
-    res = httpUtil.get(const.xq_list, headers=const.HEADERS)
-    lists = res['data']['list']
-    return lists
+# 获取龙虎榜
+# date时间形如2021-08-08
+def getLongHuBang(str_date=None):
+    num_date = sysUtil.str_date_to_num(str_date)
+    json_dic = http.get(const.xq_long_hu_bang, params_obj={'date': num_date}, headers=const.HEADERS)
+    dataList = json_dic['data']['items']
+    table = PrettyTable(['代码', '名称', '收盘价', '涨幅(%)', '成交量', '成交额', '上榜原因'])
+    res = []
+    for l in dataList:
+        data = {}
+        symbol = l['symbol']
+        name = l['name']
+        close = l['close']
+        percent = l['percent']
+        volume = l['volume']
+        amount = l['amount']
+        type_name = l['type_name']
+
+        data['symbol'] = symbol
+        data['name'] = name
+        data['close'] = close
+        data['percent'] = percent
+        data['volume'] = volume
+        data['amount'] = amount
+        data['type_name'] = type_name
+        res.append(data)
+        table.add_row([symbol, name, close, percent, volume, amount, type_name])
+    return res, table.get_string(sortby='涨幅(%)', reversesort=True)
 
 
 # 选股: 涨幅 percent,量比 volume_ratio,量能 amount,换手 turnover_rate,市值 market_capital

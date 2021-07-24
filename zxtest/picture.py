@@ -1,6 +1,6 @@
-import time
 import zx.DrawPic as draw
 import zx.Snowball as ball
+import util.SysUtil as sysUtil
 
 if __name__ == '__main__':
     # 流水图
@@ -10,4 +10,4 @@ if __name__ == '__main__':
     draw.draw_word_cloud(1)
 
     # 选股图
-    draw.draw_table(ball.pickSymbols(), time.strftime("%Y-%m-%d", time.localtime()) + "_test")
+    draw.draw_table(ball.pickSymbols(), sysUtil.today() + "_test")

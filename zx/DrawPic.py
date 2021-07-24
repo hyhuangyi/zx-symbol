@@ -1,17 +1,17 @@
-import time
 import zx.Snowball as ball
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from PIL import Image, ImageDraw, ImageFont
 import const.ZxConsts as const
+import util.SysUtil as sysUtil
 
 
 # 词云图 type 1：大涨 2：大跌
 def draw_word_cloud(type=1):
     basePath = const.download_path
     resList = ball.getAllRealTimeSymbols()
-    day = time.strftime("%Y-%m-%d", time.localtime())
+    day = sysUtil.today()
     arr = ''
     for l in resList:
         name = l['name']
@@ -98,7 +98,7 @@ def draw_flow(symbol=const.default_symbol, tick_spacing=10, count=15, type=1, if
     plt.axhline(0.00, color='r', linestyle='--', label='plane')
     plt.legend(loc='upper left')
     # 保存
-    day = time.strftime("%Y-%m-%d", time.localtime())
+    day = sysUtil.today()
     fName = basePath + day + '_' + symbol + ".png"
     plt.savefig(fName)
     # 显示图

@@ -9,6 +9,21 @@ import const.ZxConsts as const
 dbHelper = DBHelper()
 
 
+# 获取今日日期
+def today():
+    return time.strftime("%Y-%m-%d", time.localtime())
+
+
+# 日期转成毫秒
+def str_date_to_num(str_data=None):
+    if str_data is None:
+        str_data = today()
+    # 格式时间成毫秒
+    datetime_obj = datetime.datetime.strptime(str_data, "%Y-%m-%d")
+    ret_stamp = int(time.mktime(datetime_obj.timetuple()) * 1000.0 + datetime_obj.microsecond / 1000.0)
+    return ret_stamp
+
+
 # 判断当前时间是否在交易时间内
 def is_trade_time():
     d_time1 = datetime.datetime.strptime(str(datetime.datetime.now().date()) + '09:30', '%Y-%m-%d%H:%M')
@@ -80,7 +95,7 @@ def playSymbols(symbols):
 
 # 判断当前时间是否是工作日 0上班 1周末 2节假日
 def isWork():
-    date = time.strftime("%Y-%m-%d", time.localtime())
+    date = today()
     param = {'d': date}
     res = http.get(const.is_holiday, params_obj=param)
     if 0 == res:

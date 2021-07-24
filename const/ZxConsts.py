@@ -17,6 +17,9 @@ is_holiday = 'http://tool.bitefu.net/jiari/'
 
 # 雪球实时数据
 xq_list = 'https://xueqiu.com/service/v5/stock/screener/quote/list?page=1&size=6000&order=asc&order_by=current_year_percent&market=CN&type=sh_sz'
+# 龙虎榜
+xq_long_hu_bang = 'https://xueqiu.com/service/v5/stock/hq/longhu'
+
 # 爬虫请求头
 HEADERS = {'Host': 'xueqiu.com',
            'Accept': 'application/json',

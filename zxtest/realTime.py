@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     while 1:
         # 日期
-        day = time.strftime("%Y-%m-%d", time.localtime())
+        day = sysUtil.today()
         # 文件地址
         path = const.download_path + day + '_record.txt'
         f = open(path, 'a+')
