@@ -1,7 +1,10 @@
-import base64
+import time
 import datetime
+import base64
 import pyttsx3
 from util.DbUtil import DBHelper
+import util.HttpRequestUtil as http
+import const.ZxConsts as const
 
 dbHelper = DBHelper()
 
@@ -73,3 +76,14 @@ def playSymbols(symbols):
         engine.say(name + "," + zd + "百分之" + str(abs(percent)))
     engine.runAndWait()
     engine.stop()
+
+
+# 判断当前时间是否是工作日 0上班 1周末 2节假日
+def isWork():
+    date = time.strftime("%Y-%m-%d", time.localtime())
+    param = {'d': date}
+    res = http.get(const.is_holiday, params_obj=param)
+    if 0 == res:
+        return True
+    else:
+        return False

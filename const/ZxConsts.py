@@ -11,6 +11,10 @@ dingding_secret = "SECf495fcaaf44bfae5bb95eee177adf9545d3ac4ae670920bc607d46514f
 
 # 雪球token
 xq_token = 'xq_a_token=d933d420989bdcbeaa2aec79b584f51be3446511;'
+
+# 节假日查询
+is_holiday = 'http://tool.bitefu.net/jiari/'
+
 # 雪球实时数据
 xq_list = 'https://xueqiu.com/service/v5/stock/screener/quote/list?page=1&size=6000&order=asc&order_by=current_year_percent&market=CN&type=sh_sz'
 # 爬虫请求头
