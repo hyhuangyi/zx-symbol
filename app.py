@@ -13,7 +13,7 @@ app = Flask(__name__)
 def jobs():
     scheduler = BlockingScheduler()
     # 每天3点05分跑
-    scheduler.add_job(job.save_stock_day(), 'cron', hour='15', minute='05')
+    scheduler.add_job(job.save_stock_day, 'cron', hour='15', minute='05')
     scheduler.start()
 
 
@@ -34,15 +34,26 @@ def v1():
     return render_template("./symbol.html", res=res, stop=int(stop))
 
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
+@app.route('/v2', methods=['GET', 'POST'])
+def v2():
     day = time.strftime("%Y-%m-%d", time.localtime())
-    res = snow.pickSymbols()
-    path = draw.draw_table(res, day + '_zf_lb_ln_hs_sz')
+    res = snow.pickSymbols(5, 10, 2, 10, 0.5, 20, 1, 10, 50, 2000)
+    path = draw.draw_table(res, day + '策略2_高涨幅')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',
                            img_stream=img_stream)
 
 
-app.run()
-jobs()
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    day = time.strftime("%Y-%m-%d", time.localtime())
+    res = snow.pickSymbols()
+    path = draw.draw_table(res, day + '策略1_量价齐升')
+    img_stream = sysUtil.get_img_stream(path)
+    return render_template('pick.html',
+                           img_stream=img_stream)
+
+
+if __name__ == "__main__":
+    app.run()
+    jobs()

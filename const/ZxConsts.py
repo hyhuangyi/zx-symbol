@@ -41,7 +41,7 @@ default_symbol = '000858'
 
 # 策略
 percent_pre = 2
-percent_post = 10
+percent_post = 5
 volume_ratio_pre = 1.2
 volume_ratio_post = 10
 amount_pre = 1
