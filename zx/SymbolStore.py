@@ -1,5 +1,4 @@
 import tushare as ts
-import zx.Snowball as ball
 import const.SqlConsts as sql
 import const.ZxConsts as const
 import util.SysUtil as sysUtil
@@ -23,6 +22,7 @@ def saveAllSymbol():
 
 # 保存当日股票交易信息
 def saveStockHistory():
+    import zx.Snowball as ball
     date = sysUtil.today()
     resList = ball.getAllRealTimeSymbols()
     arr = []
@@ -51,6 +51,3 @@ def selectStockHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=10
     arr = dbHelper.db.select_list(sql.stock_history_select, tuple([date, current, cyp_pre, cyp_post]))
     return arr
 
-
-if __name__ == '__main__':
-    print(selectStockHistory('2021-07-23'))
