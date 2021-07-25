@@ -1,3 +1,4 @@
+import os
 import time
 import datetime
 import base64
@@ -87,8 +88,22 @@ def get_name_by_symbol(symbol):
         raise Exception(symbol + '查询异常')
 
 
+# 判断文件是否存在 不存在创建
+def create_dir_not_exist(path):
+    if not os.path.exists(path):
+        os.mkdir(path)
+
+
+# 获取存储位置
+def get_root_path():
+    day = today()
+    basePath = const.download_path
+    create_dir_not_exist(basePath + day)
+    return basePath + day + "/"
+
+
 # 语音播报
-def playSymbols(symbols):
+def play_symbols(symbols):
     engine = pyttsx3.init()
     engine.setProperty('rate', 250)
     for l in symbols:
@@ -107,7 +122,7 @@ def playSymbols(symbols):
 
 
 # 判断当前时间是否是工作日 0上班 1周末 2节假日
-def isWork():
+def is_work():
     date = today()
     param = {'d': date}
     res = http.get(const.is_holiday, params_obj=param)

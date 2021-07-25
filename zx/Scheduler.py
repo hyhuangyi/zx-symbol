@@ -5,7 +5,7 @@ import zx.SymbolStore as store
 
 # 输出时间
 def save_stock_day():
-    if sysUtil.isWork():
+    if sysUtil.is_work():
         start = time.time()
         print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + " 开始执行任务")
         store.saveStockHistory()

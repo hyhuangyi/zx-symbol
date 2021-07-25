@@ -47,7 +47,7 @@ def v2():
 @app.route('/v3', methods=['GET', 'POST'])
 def v3():
     day = sysUtil.today()
-    if sysUtil.isWork():
+    if sysUtil.is_work():
         store.saveStockHistory(day)
     res = snow.pickSymbolByHistory(day, 5, -10, 10)
     path = draw.draw_table(res, day + '策略3_年初至今')
