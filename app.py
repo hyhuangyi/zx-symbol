@@ -1,6 +1,7 @@
 import zx.DrawPic as draw
 import zx.Scheduler as job
 import zx.Snowball as snow
+import zx.SymbolStore as store
 import const.ZxConsts as const
 import util.SysUtil as sysUtil
 from flask import Flask, render_template, request
@@ -46,7 +47,9 @@ def v2():
 @app.route('/v3', methods=['GET', 'POST'])
 def v3():
     day = sysUtil.today()
-    res = snow.pickSymbolByHistory(sysUtil.today(), 5, -10, 10)
+    if sysUtil.isWork():
+        store.saveStockHistory(day)
+    res = snow.pickSymbolByHistory(day, 5, -10, 10)
     path = draw.draw_table(res, day + '策略3_年初至今')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',

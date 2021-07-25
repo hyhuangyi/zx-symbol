@@ -21,9 +21,10 @@ def saveAllSymbol():
 
 
 # 保存当日股票交易信息
-def saveStockHistory():
+def saveStockHistory(date=None):
     import zx.Snowball as ball
-    date = sysUtil.today()
+    if date is None:
+        date = sysUtil.today()
     resList = ball.getAllRealTimeSymbols()
     arr = []
     for l in resList:
@@ -50,4 +51,3 @@ def saveStockHistory():
 def selectStockHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=10):
     arr = dbHelper.db.select_list(sql.stock_history_select, tuple([date, current, cyp_pre, cyp_post]))
     return arr
-
