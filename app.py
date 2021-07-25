@@ -36,9 +36,8 @@ def v1():
 
 @app.route('/v2', methods=['GET', 'POST'])
 def v2():
-    day = sysUtil.today()
     res = snow.pickSymbols(5, 12, 2, 10, 0.5, 20, 1, 10, 50, 2000, sortBy=1)
-    path = draw.draw_table(res, day + '策略2_高涨幅')
+    path = draw.draw_table(res, '策略2_高涨幅')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',
                            img_stream=img_stream)
@@ -50,7 +49,7 @@ def v3():
     if sysUtil.is_work():
         store.saveStockHistory(day)
     res = snow.pickSymbolByHistory(day, 5, -10, 10)
-    path = draw.draw_table(res, day + '策略3_年初至今')
+    path = draw.draw_table(res, '策略3_年初至今')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',
                            img_stream=img_stream)
@@ -58,9 +57,8 @@ def v3():
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    day = sysUtil.today()
     res = snow.pickSymbols()
-    path = draw.draw_table(res, day + '策略1_量价齐升')
+    path = draw.draw_table(res, '策略1_量价齐升')
     img_stream = sysUtil.get_img_stream(path)
     return render_template('pick.html',
                            img_stream=img_stream)
