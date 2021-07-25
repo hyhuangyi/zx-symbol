@@ -11,10 +11,10 @@ if __name__ == '__main__':
     draw.draw_word_cloud(1)
 
     # 选股图
-    draw.draw_table(ball.pickSymbols(),  "pickSymbols_test")
+    draw.draw_table(ball.pickSymbols(), "pickSymbols_test")
 
     # 年初至今亏损 当日大涨图
     draw.draw_table(ball.pickSymbolByHistory(date), "pickSymbolByHistory_test")
 
     # 龙虎榜图
-    draw.draw_table(ball.longHuBang(date)[1],  "龙虎榜")
+    draw.draw_table(ball.longHuBang(date)[1], "龙虎榜")
