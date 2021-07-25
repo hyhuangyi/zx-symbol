@@ -2,6 +2,7 @@ import zx.Snowball as ball
 
 date = '2021-07-23'
 symbol = '300418'
+
 if __name__ == '__main__':
     # 实时信息
     print(ball.realTimeData(symbol)[1])
