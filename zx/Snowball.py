@@ -2,6 +2,7 @@ import time
 import pysnowball as ball
 import util.HttpRequestUtil as http
 from prettytable import PrettyTable
+import zx.SymbolStore as store
 import const.ZxConsts as const
 import util.SysUtil as sysUtil
 
@@ -185,3 +186,18 @@ def pickSymbols(percent_pre=const.percent_pre, percent_post=const.percent_post, 
         sort = '换手率(%)'
     res = table.get_string(sortby=sort, reversesort=True)
     return res
+
+
+# 根据年初至今和今日涨幅选股
+def pickSymbolByHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=10):
+    arr = store.selectStockHistory(date, current, cyp_pre, cyp_post)
+    table = PrettyTable(['时间', '代码', '名称', '涨幅(%)', '年初至今(%)', '量能(亿)', '换手率(%)', '市值(亿)'])
+    for l in arr:
+        table.add_row(
+            [l[0], l[1], l[2], round(l[3], 2), round(l[4], 2), round(l[5], 2), round(l[6], 2), round(l[7], 2)])
+    return table
+
+
+if __name__ == '__main__':
+    print(pickSymbolByHistory('2021-07-23'))
+
