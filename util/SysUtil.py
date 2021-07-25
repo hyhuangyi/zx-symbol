@@ -24,6 +24,19 @@ def str_date_to_num(str_data=None):
     return ret_stamp
 
 
+# 获取排序字段
+def symbol_sort(sortBy=1):
+    if sortBy == 1:
+        sort = '涨幅(%)'
+    elif sortBy == 2:
+        sort = '年初至今(%)'
+    elif sortBy == 3:
+        sort = '量能(亿)'
+    else:
+        sort = '换手率(%)'
+    return sort
+
+
 # 判断当前时间是否在交易时间内
 def is_trade_time():
     d_time1 = datetime.datetime.strptime(str(datetime.datetime.now().date()) + '09:30', '%Y-%m-%d%H:%M')

@@ -1,8 +1,8 @@
 import zx.Snowball as ball
 
+date = '2021-07-23'
+symbol = '300418'
 if __name__ == '__main__':
-    symbol = '300418'
-
     # 实时信息
     print(ball.realTimeData(symbol)[1])
 
@@ -16,7 +16,10 @@ if __name__ == '__main__':
     print(ball.capitalAssort(symbol)[1])
 
     # 龙虎榜
-    print(ball.longHuBang('2021-07-23')[1])
+    print(ball.longHuBang(date)[1])
+
+    # 年初至今
+    print(ball.pickSymbolByHistory(date))
 
     # 选股
     print(ball.pickSymbols(2, 5, 1.2, 10, 1, 20,

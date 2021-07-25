@@ -176,15 +176,8 @@ def pickSymbols(percent_pre=const.percent_pre, percent_post=const.percent_post, 
                 table.add_row(
                     [symbol, name, percent, amount, turnover_rate, volume_ratio, current, current_year_percent,
                      amplitude, market_capital])
-    if sortBy == 1:
-        sort = '涨幅(%)'
-    elif sortBy == 2:
-        sort = '年初至今(%)'
-    elif sortBy == 3:
-        sort = '量能(亿)'
-    else:
-        sort = '换手率(%)'
-    res = table.get_string(sortby=sort, reversesort=True)
+
+    res = table.get_string(sortby=sysUtil.symbol_sort(sortBy), reversesort=True)
     return res
 
 
@@ -195,5 +188,5 @@ def pickSymbolByHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=1
     for l in arr:
         table.add_row(
             [l[0], l[1], l[2], round(l[3], 2), round(l[4], 2), round(l[5], 2), round(l[6], 2), round(l[7], 2)])
-    return table
-
+    res = table.get_string()
+    return res
