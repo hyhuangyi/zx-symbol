@@ -21,7 +21,9 @@ CREATE TABLE `stock_history` (
   `turnover_rate` decimal(11,4) DEFAULT NULL COMMENT '换手',
   `market_capital` decimal(11,4) DEFAULT NULL COMMENT '市值',
   `current_year_percent` decimal(11,4) DEFAULT NULL COMMENT '年初至今',
+  `create_time` varchar(50) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`date`,`symbol`),
   KEY `date` (`date`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='股票历史记录';
+
 

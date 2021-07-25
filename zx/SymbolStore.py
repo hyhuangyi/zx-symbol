@@ -26,6 +26,7 @@ def saveStockHistory(date=None):
     if date is None:
         date = sysUtil.today()
     resList = ball.getAllRealTimeSymbols()
+    now_time = sysUtil.now_time()
     arr = []
     for l in resList:
         symbol = l['symbol']
@@ -40,7 +41,7 @@ def saveStockHistory(date=None):
         market_capital = round(l['market_capital'] / 100000000, 2) if l['market_capital'] is not None else 0
         arr.append(tuple(
             [symbol, name, current, percent, amplitude, amount, volume_ratio, current_year_percent, turnover_rate,
-             market_capital, date]))
+             market_capital, date,now_time]))
     dbHelper.db.delByCondition(sql.del_stock_history_by_date, date)
     dbHelper.db.batch_insert(sql.stock_history_insert_sql, arr)
     return arr

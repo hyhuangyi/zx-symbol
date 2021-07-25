@@ -15,6 +15,11 @@ def today():
     return time.strftime("%Y-%m-%d", time.localtime())
 
 
+# 获取当前时间
+def now_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
+
 # 日期转成毫秒
 def str_date_to_num(str_data=None):
     if str_data is None:

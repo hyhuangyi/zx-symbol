@@ -190,3 +190,4 @@ def pickSymbolByHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=1
             [l[0], l[1], l[2], round(l[3], 2), round(l[4], 2), round(l[5], 2), round(l[6], 2), round(l[7], 2)])
     res = table.get_string()
     return res
+
