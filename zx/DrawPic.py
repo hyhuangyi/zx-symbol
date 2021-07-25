@@ -9,9 +9,8 @@ import util.SysUtil as sysUtil
 
 # 词云图 type 1：大涨 2：大跌
 def draw_word_cloud(type=1):
-    basePath = const.download_path
+    basePath = sysUtil.download_path()
     resList = ball.getAllRealTimeSymbols()
-    day = sysUtil.today()
     arr = ''
     for l in resList:
         name = l['name']
@@ -32,16 +31,16 @@ def draw_word_cloud(type=1):
                           )
     wordCloud.generate(arr)
     if type == 1:
-        fName = basePath + day + '_up.png'
+        fName = basePath + 'up.png'
     else:
-        fName = basePath + day + '_down.png'
+        fName = basePath + 'down.png'
     wordCloud.to_file(fName)  # 保存到图片
     return fName
 
 
 # pretty table表格转化成图片
 def draw_table(tab_info, name):
-    basePath = const.download_path
+    basePath = sysUtil.download_path()
     space = 5
     # PIL模块中，确定写入到图片中的文本字体
     # ubuntu
@@ -72,7 +71,7 @@ def draw_table(tab_info, name):
 
 # 画折线图 tick_spacing 密度  count 取数数量 type 1分钟级别 2日级别
 def draw_flow(symbol=const.default_symbol, tick_spacing=10, count=15, type=1, ifShow=False):
-    basePath = const.download_path
+    basePath = sysUtil.download_path()
     arr = ball.capitalFlow(symbol, count, type)[0]
     x = []
     y = []
@@ -99,7 +98,7 @@ def draw_flow(symbol=const.default_symbol, tick_spacing=10, count=15, type=1, if
     plt.legend(loc='upper left')
     # 保存
     day = sysUtil.today()
-    fName = basePath + day + '_' + symbol + ".png"
+    fName = basePath + symbol + ".png"
     plt.savefig(fName)
     # 显示图
     if ifShow:

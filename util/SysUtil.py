@@ -91,11 +91,11 @@ def get_name_by_symbol(symbol):
 # 判断文件是否存在 不存在创建
 def create_dir_not_exist(path):
     if not os.path.exists(path):
-        os.mkdir(path)
+        os.makedirs(path)
 
 
 # 获取存储位置
-def get_root_path():
+def download_path():
     day = today()
     basePath = const.download_path
     create_dir_not_exist(basePath + day)
