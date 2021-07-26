@@ -23,6 +23,7 @@ xq_long_hu_bang = 'https://xueqiu.com/service/v5/stock/hq/longhu'
 # 爬虫请求头
 HEADERS = {'Host': 'xueqiu.com',
            'Accept': 'application/json',
+           'Cookie': xq_token,
            'User-Agent': 'Xueqiu iPhone 11.8',
            'Accept-Language': 'zh-Hans-CN;q=1, ja-JP;q=0.9',
            'Accept-Encoding': 'br, gzip, deflate',

@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 
 def jobs():
+    print("启动job")
     scheduler = BlockingScheduler()
     # 每天3点05分跑
     scheduler.add_job(job.save_stock_day, 'cron', hour='15', minute='05')
@@ -64,6 +65,6 @@ def home():
                            img_stream=img_stream)
 
 
-if __name__ == "__main__":
-    app.run()
-    jobs()
+app.run(port=5000)
+jobs()
+
