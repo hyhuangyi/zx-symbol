@@ -52,3 +52,7 @@ def saveStockHistory(date=None):
 def selectStockHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=10):
     arr = dbHelper.db.select_list(sql.stock_history_select, tuple([date, current, cyp_pre, cyp_post]))
     return arr
+
+
+if __name__ == '__main__':
+    saveStockHistory('2021-07-26')
