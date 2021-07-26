@@ -1,6 +1,7 @@
 import zx.Snowball as ball
+import util.SysUtil as sysUtil
 
-date = '2021-07-23'
+date = sysUtil.today()
 symbol = '300418'
 
 if __name__ == '__main__':
