@@ -3,7 +3,7 @@ import zx.Snowball as snow
 import util.SysUtil as sysUtil
 import util.DingdingNotifyUtil as notifyUtil
 
-codes = '000858,300418'
+codes = '000858,002185'
 time_sleep = 5
 
 if __name__ == '__main__':
