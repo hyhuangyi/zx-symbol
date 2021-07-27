@@ -12,7 +12,7 @@ if __name__ == '__main__':
         # 日期
         day = sysUtil.today()
         # 文件地址
-        path = sysUtil.download_path()+"record.txt"
+        path = sysUtil.download_path() + "record.txt"
         f = open(path, 'a+')
         # 时间戳
         timStr = time.strftime("%H:%M:%S", time.localtime())
