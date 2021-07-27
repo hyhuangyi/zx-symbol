@@ -149,6 +149,23 @@ def longHuBang(str_date=None):
     return res, table.get_string(sortby='涨幅(%)', reversesort=True)
 
 
+# 雪球评论
+def symbolComment(symbol=const.default_symbol, sort='time', page=1, count=100):
+    data = http.get(const.xq_comment,
+                    params_obj={'symbol': sysUtil.complete_symbol(symbol), 'page': page, 'count': count, 'sort': sort},
+                    headers=const.HEADERS)
+    res = []
+    lists = data['list']
+    for l in lists:
+        temp = {}
+        title = l['title']
+        text = sysUtil.filter_tags(l['text'])
+        temp['title'] = title
+        temp['text'] = text
+        res.append(temp)
+    return res
+
+
 # 选股: 涨幅 percent,量比 volume_ratio,量能 amount,换手 turnover_rate,市值 market_capital
 def pickSymbols(percent_pre=const.percent_pre, percent_post=const.percent_post, volume_ratio_pre=const.volume_ratio_pre,
                 volume_ratio_post=const.volume_ratio_post, amount_pre=const.amount_pre, amount_post=const.amount_post,
@@ -190,4 +207,3 @@ def pickSymbolByHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=1
             [l[0], l[1], l[2], round(l[3], 2), round(l[4], 2), round(l[5], 2), round(l[6], 2), round(l[7], 2)])
     res = table.get_string()
     return res
-
