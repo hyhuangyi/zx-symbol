@@ -1,7 +1,8 @@
 import zx.DrawPic as draw
 import zx.Snowball as ball
+import util.SysUtil as sysUtil
 
-date = '2021-07-23'
+date = sysUtil.today()
 
 if __name__ == '__main__':
     # 流水图
