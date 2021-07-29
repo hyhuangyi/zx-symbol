@@ -15,6 +15,9 @@ xq_token = 'xq_a_token=d933d420989bdcbeaa2aec79b584f51be3446511;'
 # 节假日查询
 is_holiday = 'http://tool.bitefu.net/jiari/'
 
+# 新浪板块信息
+sina_bk = 'http://vip.stock.finance.sina.com.cn/q/view/newSinaHy.php'
+
 # 雪球实时数据
 xq_list = 'https://xueqiu.com/service/v5/stock/screener/quote/list?page=1&size=6000&order=asc&order_by=current_year_percent&market=CN&type=sh_sz'
 # 龙虎榜

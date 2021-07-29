@@ -1,3 +1,4 @@
+import zx.Sina as sina
 import zx.Snowball as ball
 import util.SysUtil as sysUtil
 
@@ -26,3 +27,5 @@ if __name__ == '__main__':
     # 选股
     print(ball.pickSymbols(2, 5, 1.2, 10, 1, 20,
                            3, 20, 50, 1000, sortBy=2))
+    # 行业情况
+    print(sina.getIndustryInfo())

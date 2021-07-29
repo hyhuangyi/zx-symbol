@@ -1,3 +1,4 @@
+import zx.Sina as sina
 import zx.DrawPic as draw
 import zx.Snowball as ball
 import util.SysUtil as sysUtil
@@ -19,3 +20,6 @@ if __name__ == '__main__':
 
     # 龙虎榜图
     draw.draw_table(ball.longHuBang(date)[1], "龙虎榜")
+
+    # 行业图
+    draw.draw_table(sina.getIndustryInfo(), "行业涨幅")
