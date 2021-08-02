@@ -3,7 +3,7 @@ import zx.Snowball as ball
 import util.SysUtil as sysUtil
 
 date = sysUtil.today()
-symbol = '000858'
+symbol = '002597'
 
 if __name__ == '__main__':
     # 实时信息
