@@ -160,6 +160,8 @@ def symbolComment(symbol=const.default_symbol, sort='time', page=1, count=100):
         temp = {}
         title = l['title']
         text = sysUtil.filter_tags(l['text'])
+        date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(l['created_at'] / 1000))
+        temp['date'] = date
         temp['title'] = title
         temp['text'] = text
         res.append(temp)
