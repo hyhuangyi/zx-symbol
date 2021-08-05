@@ -4,7 +4,7 @@ import util.SysUtil as sysUtil
 import util.DingdingNotifyUtil as notifyUtil
 
 codes = '000858,600779,002617'
-codes = '000969,002597,600798'
+codes = '000969,002597,300463'
 time_sleep = 5
 
 if __name__ == '__main__':
