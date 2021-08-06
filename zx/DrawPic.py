@@ -97,7 +97,6 @@ def draw_flow(symbol=const.default_symbol, tick_spacing=10, count=15, type=1, if
     plt.axhline(0.00, color='r', linestyle='--', label='plane')
     plt.legend(loc='upper left')
     # 保存
-    day = sysUtil.today()
     fName = basePath + symbol + ".png"
     plt.savefig(fName)
     # 显示图
