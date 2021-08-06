@@ -16,7 +16,7 @@ def singleton(cls):
 
 
 @singleton
-class db():  # 类名和模块名一致，robot导入时不用写类名@@@@@
+class zxMysql():  # 类名和模块名一致，robot导入时不用写类名@@@@@
 
     def __init__(self):
         self.host = const.mysql_host
@@ -107,6 +107,6 @@ class db():  # 类名和模块名一致，robot导入时不用写类名@@@@@
             self.conn.rollback()
 
 
-class DBHelper(object):
+class MysqlHelper(object):
     def __init__(self):
-        self.db = db()
+        self.db = zxMysql()

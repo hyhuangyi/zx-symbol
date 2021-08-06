@@ -1,9 +1,15 @@
-# mysql数据库信息
+# mysql配置
 mysql_host = "127.0.0.1"
 mysql_port = 3306
 mysql_user = "root"
 mysql_password = "admin"
 mysql_db = "zx"
+
+# redis配置
+redis_host = "127.0.0.1"
+redis_port = 6379
+redis_password = None
+redis_db = 0
 
 # 钉钉配置
 dingding_urL = "https://oapi.dingtalk.com/robot/send?access_token=31d756dc11a9fa23d850879416cb1e7c097a2def004f62d81b274a8970ae8638"

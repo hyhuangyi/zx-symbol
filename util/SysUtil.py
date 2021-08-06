@@ -4,11 +4,11 @@ import time
 import datetime
 import base64
 import pyttsx3
-from util.DbUtil import DBHelper
+from util.MsyqlUtil import MysqlHelper
 import util.HttpRequestUtil as http
 import const.ZxConsts as const
 
-dbHelper = DBHelper()
+mysqlHelper = MysqlHelper()
 
 
 # 获取今日日期
@@ -87,7 +87,7 @@ def get_name_by_symbol(symbol):
         symbol = symbol[-6:]
     elif len(symbol) != 6 and len(symbol) != 8:
         raise Exception('代码传6位或8位')
-    lists = dbHelper.db.select_list('select *from stock where symbol=%s', symbol[-6:])
+    lists = mysqlHelper.db.select_list('select *from stock where symbol=%s', symbol[-6:])
     if len(lists) == 1:
         return lists[0][2]
     else:
