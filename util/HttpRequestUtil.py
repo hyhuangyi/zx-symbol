@@ -1,6 +1,6 @@
-import requests
 import json
-import urllib
+import requests
+import urllib.parse
 
 
 # get请求
