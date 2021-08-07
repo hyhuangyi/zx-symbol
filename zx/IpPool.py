@@ -104,10 +104,12 @@ def thread_check(thread_num=const.thread_num, random_num=const.random_num, key=c
     end_count = len(redisHelper.db.r_smembers(key))
     last_count = abs(end_count - start_count)
     temp = "增加" if type == 'save' else '删除'
-    msg = "多线程检测结束:用时" + str(round(time.time() - start, 2)) + "秒,共" + temp + str(last_count) + "个"
+    msg = "多线程检测结束:用时" + str(round(time.time() - start, 2)) + "秒,共" + temp + str(last_count) + "个，池中还有" + str(
+        end_count) + "个"
     ding.send_ding_message(msg, True)
     print(msg)
 
 
 if __name__ == '__main__':
-    thread_check(100,100,'ip','del')
+    thread_check(thread_num=100, type='del')
+    # thread_check(1000,10000)
