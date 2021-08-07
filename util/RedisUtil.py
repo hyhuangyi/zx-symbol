@@ -44,12 +44,25 @@ class zxRedis():
     def r_del(self, key):
         self.conn.delete(key)
 
-    # 向集合中添加单个或多个元素
+    # 向set集合中添加单个或多个元素
     def r_sadd(self, key, *values):
         self.conn.sadd(key, *values)
+
+    # 获取set列表
+    def r_smembers(self, key):
+        res = []
+        arr = self.conn.smembers(key)
+        if arr is None:
+            return None
+        for i in arr:
+            res.append(i.decode("UTF-8"))
+        return res
+
+    # 删除set成员
+    def r_srem(self, key, *values):
+        self.conn.srem(key, *values)
 
 
 class RedisHelper(object):
     def __init__(self):
         self.db = zxRedis()
-

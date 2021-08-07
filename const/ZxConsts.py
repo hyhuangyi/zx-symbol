@@ -64,3 +64,12 @@ turnover_rate_pre = 3
 turnover_rate_post = 20
 market_capital_pre = 50
 market_capital_post = 1000
+
+# ip池
+valid_url = 'http://47.110.13.117/'
+ip_key = 'ip'
+thread_num = 100
+random_num = 10000
+ip_default_type = 'save'
+
+
