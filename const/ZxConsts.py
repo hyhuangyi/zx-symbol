@@ -66,10 +66,8 @@ market_capital_pre = 50
 market_capital_post = 1000
 
 # ip池
-valid_url = 'http://47.110.13.117/'
-ip_key = 'ip'
+valid_http = 'http://httpbin.org/ip'
+valid_https = 'https://httpbin.org/ip'
+ip_key = 'https'
 thread_num = 100
-random_num = 10000
 ip_default_type = 'save'
-
-

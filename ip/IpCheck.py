@@ -1,54 +1,14 @@
 import time
-import random
 import requests
 import threading
 from queue import Queue
-import util.IpUtil as ipUtil
 import const.ZxConsts as const
+import util.SysUtil as sysUtil
 from util.RedisUtil import RedisHelper
 import util.DingdingNotifyUtil as ding
+import ip.xiciip  as xc
 
 redisHelper = RedisHelper()
-
-
-# 获取请求头
-def getheaders():
-    user_agent_list = [
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
-        "Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11",
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
-        "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6",
-        "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/19.77.34.5 Safari/537.1"
-    ]
-    UserAgent = random.choice(user_agent_list)
-    headers = {"User-Agent": UserAgent}
-    return headers
-
-
-# 检测是否有效
-def is_enable(ip_port):
-    proxies = {
-        "http": "http://" + ip_port + "/",
-        "https": "https://" + ip_port + "/"
-    }
-    try:
-        requests.get(const.valid_url, headers=getheaders(),
-                     proxies=proxies, timeout=2)
-        print(threading.currentThread().name + "=====" + ip_port + ' 能用')
-        return True
-    except Exception as e:
-        print(threading.currentThread().name + "=====" + ip_port + ' 不能用')
-        return False
-
-
-# 随机生成ip
-def random_ip(num=const.random_num):
-    arr = []
-    while len(arr) < num:
-        ip = ipUtil.get_ip()
-        arr.append(ip)
-        print(len(arr))
-    return arr
 
 
 # 从redis ip池获取ip列表
@@ -63,6 +23,30 @@ def get_ip_queue(ipList):
     for ip in ipList:
         ip_queue.put(ip)
     return ip_queue
+
+
+# 检测是否有效
+# 请求的ip是https类型的，但代理ip是只支持http的 那么还是使用本机的ip
+# 请求的ip是http类型的，那么代理ip一定要是http的 前面不能写成https
+def is_enable(ip_port, http='https'):
+    if http == 'https':
+        proxies = {
+            "https": ip_port
+        }
+        v_url = const.valid_https
+    else:
+        proxies = {
+            "http": ip_port
+        }
+        v_url = const.valid_http
+    try:
+        requests.get(v_url, headers=sysUtil.getheaders(),
+                     proxies=proxies, timeout=2)
+        print(threading.currentThread().name + "=====" + ip_port + ' 能用')
+        return True
+    except Exception as e:
+        print(threading.currentThread().name + "=====" + ip_port + ' 不能用')
+        return False
 
 
 # 检测ip
@@ -80,13 +64,13 @@ def check_ip(ip_queue, key=const.ip_key, type=const.ip_default_type):
 
 
 # 多线程检测
-def thread_check(thread_num=const.thread_num, random_num=const.random_num, key=const.ip_key,
-                 type=const.ip_default_type):
+def thread_check(thread_num=const.thread_num, key=const.ip_key,
+                 type=const.ip_default_type, ip_list=None):
     start_count = len(redisHelper.db.r_smembers(key))
     print(start_count)
     start = time.time()
     if type == 'save':
-        ipList = random_ip(random_num)
+        ipList = ip_list
     else:
         ipList = redis_ip_list(key)
 
@@ -111,5 +95,5 @@ def thread_check(thread_num=const.thread_num, random_num=const.random_num, key=c
 
 
 if __name__ == '__main__':
-    thread_check(thread_num=100, type='del')
-    # thread_check(1000,10000)
+    # thread_check(ip_list=xc.ip_task(20))
+    thread_check(type='del')
