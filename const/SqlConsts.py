@@ -1,6 +1,8 @@
 # stock表
 truncate_stock = 'truncate table stock'
 stock_insert_sql = 'INSERT INTO stock(ts_code, symbol, name,area, industry,list_date) VALUES(%s, %s, %s, %s, %s, %s)'
+select_by_symbol = 'select *from stock where symbol=%s'
+select_by_name = 'select *from stock where name=%s'
 
 # stock_history表
 del_stock_history_by_date = 'delete from stock_history where date=%s'

@@ -3,7 +3,6 @@ import re
 import time
 import datetime
 import base64
-import pyttsx3
 import random
 from util.MsyqlUtil import MysqlHelper
 import util.HttpRequestUtil as http
@@ -82,19 +81,6 @@ def get_img_stream(img_local_path):
     return img_stream
 
 
-# 根据代码获取名称
-def get_name_by_symbol(symbol):
-    if len(symbol) == 8:
-        symbol = symbol[-6:]
-    elif len(symbol) != 6 and len(symbol) != 8:
-        raise Exception('代码传6位或8位')
-    lists = mysqlHelper.db.select_list('select *from stock where symbol=%s', symbol[-6:])
-    if len(lists) == 1:
-        return lists[0][2]
-    else:
-        raise Exception(symbol + '查询异常')
-
-
 # 判断文件是否存在 不存在创建
 def create_dir_not_exist(path):
     if not os.path.exists(path):
@@ -107,25 +93,6 @@ def download_path():
     basePath = const.download_path
     create_dir_not_exist(basePath + day)
     return basePath + day + "/"
-
-
-# 语音播报
-def play_symbols(symbols):
-    engine = pyttsx3.init()
-    engine.setProperty('rate', 250)
-    for l in symbols:
-        symbol = l['symbol']
-        percent = l['percent']
-        # 获取名称
-        name = get_name_by_symbol(symbol)
-        zd = ''
-        if percent > 0:
-            zd = "红"
-        else:
-            zd = "绿"
-        engine.say(name + "," + zd + "百分之" + str(abs(percent)))
-    engine.runAndWait()
-    engine.stop()
 
 
 # 判断当前时间是否是工作日 0上班 1周末 2节假日

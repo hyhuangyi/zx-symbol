@@ -1,4 +1,5 @@
 import time
+import pyttsx3
 import pysnowball as ball
 import util.HttpRequestUtil as http
 from prettytable import PrettyTable
@@ -209,3 +210,31 @@ def pickSymbolByHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=1
             [l[0], l[1], l[2], round(l[3], 2), round(l[4], 2), round(l[5], 2), round(l[6], 2), round(l[7], 2)])
     res = table.get_string()
     return res
+
+
+# 语音播报
+def play_symbols(symbols):
+    engine = pyttsx3.init()
+    engine.setProperty('rate', 250)
+    for l in symbols:
+        symbol = l['symbol']
+        percent = l['percent']
+        # 获取名称
+        name = store.get_name_by_symbol(symbol)
+        zd = ''
+        if percent > 0:
+            zd = "红"
+        else:
+            zd = "绿"
+        engine.say(name + "," + zd + "百分之" + str(abs(percent)))
+    engine.runAndWait()
+    engine.stop()
+
+
+# 根据名称获取实时信息
+def getRealInfoByName(name):
+    symbol = store.get_symbol_by_name(name)
+    if symbol is None:
+        return None
+    else:
+        return realTimeData(sysUtil.complete_symbol(symbol))[0]
