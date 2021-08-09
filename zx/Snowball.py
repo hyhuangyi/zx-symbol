@@ -231,10 +231,4 @@ def play_symbols(symbols):
     engine.stop()
 
 
-# 根据名称获取实时信息
-def getRealInfoByName(name):
-    symbol = store.get_symbol_by_name(name)
-    if symbol is None:
-        return None
-    else:
-        return realTimeData(sysUtil.complete_symbol(symbol))[0]
+
