@@ -1,5 +1,6 @@
 import zx.Snowball as ball
 import zx.SymbolStore as store
+import zx.Sina as sina
 
 
 # 打印评论
@@ -11,7 +12,8 @@ def printComment(symbol):
             print(d)
 
 
-name = '荃银高科'
+name = '安泰科技'
+# name = '荃银高科'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
@@ -19,10 +21,13 @@ if __name__ == '__main__':
     print(ball.realTimeData(symbol)[1])
 
     # 主动资金信息
-    print(ball.capitalFlow(symbol, count=240)[1])
+    print(ball.capitalFlow(symbol, count=15)[1])
 
     # 盘口信息
     print(ball.panKou(symbol)[1])
 
-    # 评论
-    printComment(symbol)
+    # # 评论
+    # printComment(symbol)
+
+    # 行业情况
+    # print(sina.getIndustryInfo())

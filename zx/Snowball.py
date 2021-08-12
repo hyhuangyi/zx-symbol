@@ -1,4 +1,5 @@
 import time
+import json
 import pyttsx3
 import pysnowball as ball
 import util.HttpRequestUtil as http
@@ -213,7 +214,7 @@ def pickSymbolByHistory(date=sysUtil.today(), current=5, cyp_pre=-10, cyp_post=1
 
 
 # 语音播报
-def play_symbols(symbols):
+def playSymbols(symbols):
     engine = pyttsx3.init()
     engine.setProperty('rate', 250)
     for l in symbols:
@@ -231,4 +232,17 @@ def play_symbols(symbols):
     engine.stop()
 
 
-
+# 雪球用户组合持仓
+def lookUserHold(user='ZH010389'):
+    import requests
+    html = requests.get(const.xq_user_hold + user, headers=const.HEADERS)
+    data = html.text
+    pos_start = data.find('SNB.cubeInfo = {') + len('SNB.cubeInfo = ')
+    pos_end = data.find('SNB.cubePieData')
+    r = data[pos_start:pos_end]
+    dic = json.loads(r)
+    arr = dic['last_rebalancing']['holdings']
+    res = []
+    for s in arr:
+        res.append(s['stock_symbol'] + ":" + s['stock_name'] + "  占比:" + str(s['weight']))
+    return res

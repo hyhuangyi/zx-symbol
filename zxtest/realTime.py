@@ -26,7 +26,7 @@ if __name__ == '__main__':
                 notifyUtil.send_ding_message(symbol + "-->" + str(percent) + "%", False)
             res.append(symbol + '->' + str(percent))
         print(res)
-        # snow.play_symbols(arr)
+        # snow.playSymbols(arr)
         # 存到文件
         if sysUtil.is_trade_time():
             print(timStr, res, file=f)

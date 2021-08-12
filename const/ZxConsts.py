@@ -30,6 +30,9 @@ xq_list = 'https://xueqiu.com/service/v5/stock/screener/quote/list?page=1&size=6
 xq_long_hu_bang = 'https://xueqiu.com/service/v5/stock/hq/longhu'
 # 评论
 xq_comment = 'https://xueqiu.com/query/v1/symbol/search/status'
+# 用户持仓
+xq_user_hold = 'https://xueqiu.com/P/'
+
 # 爬虫请求头
 HEADERS = {'Host': 'xueqiu.com',
            'Accept': 'application/json',
