@@ -13,7 +13,7 @@ def printComment(symbol):
 
 
 name = '安泰科技'
-# name = '荃银高科'
+# name = '华正新材'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
@@ -25,6 +25,8 @@ if __name__ == '__main__':
 
     # 盘口信息
     print(ball.panKou(symbol)[1])
+
+    print(ball.lookUserHold())
 
     # # 评论
     # printComment(symbol)
