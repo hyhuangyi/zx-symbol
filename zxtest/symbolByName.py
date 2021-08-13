@@ -12,24 +12,28 @@ def printComment(symbol):
             print(d)
 
 
+kg = False
 name = '安泰科技'
 # name = '华正新材'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
-    # 实时信息
-    print(ball.realTimeData(symbol)[1])
+    if kg:
+        # 实时信息
+        print(ball.realTimeData(symbol)[1])
 
-    # 主动资金信息
-    print(ball.capitalFlow(symbol, count=15)[1])
+        # 主动资金信息
+        print(ball.capitalFlow(symbol, count=15)[1])
 
-    # 盘口信息
-    print(ball.panKou(symbol)[1])
+        # 盘口信息
+        print(ball.panKou(symbol)[1])
+    else:
 
-    print(ball.lookUserHold())
+        # 评论
+        printComment(symbol)
 
-    # # 评论
-    # printComment(symbol)
+        # 组合持仓
+        # print(ball.lookZhHold())
 
-    # 行业情况
-    # print(sina.getIndustryInfo())
+        # 行业情况
+        # print(sina.getIndustryInfo())

@@ -232,10 +232,10 @@ def playSymbols(symbols):
     engine.stop()
 
 
-# 雪球用户组合持仓
-def lookUserHold(user='ZH010389'):
+# 雪球组合持仓
+def lookZhHold(zh='ZH010389'):
     import requests
-    html = requests.get(const.xq_user_hold + user, headers=const.HEADERS)
+    html = requests.get(const.xq_user_hold + zh, headers=const.HEADERS)
     data = html.text
     pos_start = data.find('SNB.cubeInfo = {') + len('SNB.cubeInfo = ')
     pos_end = data.find('SNB.cubePieData')
