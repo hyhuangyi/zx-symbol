@@ -16,6 +16,20 @@ def today():
     return time.strftime("%Y-%m-%d", time.localtime())
 
 
+# 获取昨日日期
+def yesterday():
+    now = datetime.date.today()
+    yesterdayDay = now + datetime.timedelta(days=-1)
+    return yesterdayDay.strftime("%Y-%m-%d")
+
+
+# 获取明日日期
+def tomorrow():
+    now = datetime.date.today()
+    tomorrowDay = now + datetime.timedelta(days=1)
+    return tomorrowDay.strftime("%Y-%m-%d")
+
+
 # 获取当前时间
 def now_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
