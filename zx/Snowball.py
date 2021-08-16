@@ -1,6 +1,8 @@
 import time
 import json
 import pyttsx3
+import datetime
+import efinance as ef
 import pysnowball as ball
 import util.HttpRequestUtil as http
 from prettytable import PrettyTable
@@ -246,3 +248,33 @@ def lookZhHold(zh='ZH010389'):
     for s in arr:
         res.append(s['stock_symbol'] + ":" + s['stock_name'] + "  占比:" + str(s['weight']))
     return res
+
+
+# 获取财报
+# date 指定日期公布的财报 当date为None查所有公布的财报
+def getSymbolReport(date=None, sortBy=1):
+    if sortBy == 1:
+        sort = '归属净利润'
+    else:
+        sort = '归属净利润同比'
+    res = []
+    table = PrettyTable(["代码", "名称", "公告日期", "归属净利润", "归属净利润同比", "报告名称"])
+    data = ef.stock.get_all_company_performance()
+    arr = data.values
+    for a in arr:
+        temp = {}
+        temp['symbol'] = symbol = a[0]
+        temp['name'] = name = a[1]
+        day = str(datetime.datetime.strptime(a[2], '%Y-%m-%d %H:%M:%S').date())
+        temp['day'] = day
+        temp['profit'] = profit = round(a[7] / 100000000, 2)
+        temp['yearOnYear'] = yearOnYear = round(a[8], 2)
+        temp['quarter'] = quarter = a[9]
+        if date is None:
+            res.append(temp)
+            table.add_row([symbol, name, day, profit, yearOnYear, quarter])
+        else:
+            if day == date:
+                res.append(temp)
+                table.add_row([symbol, name, day, profit, yearOnYear, quarter])
+    return res, table.get_string(sortby=sort, reversesort=True)
