@@ -12,9 +12,10 @@ def printComment(symbol):
             print(d)
 
 
-kg = False
+kg = True
+# kg = False
 name = '安泰科技'
-# name = '华正新材'
+# name = '天顺风能'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
