@@ -23,3 +23,6 @@ if __name__ == '__main__':
 
     # 行业图
     draw.draw_table(sina.getIndustryInfo(), "行业涨幅")
+
+    # 最新财报
+    draw.draw_table(ball.getSymbolReport(sysUtil.today(), sortBy=1)[1], '最新财报')

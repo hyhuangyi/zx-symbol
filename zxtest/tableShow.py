@@ -29,3 +29,6 @@ if __name__ == '__main__':
                            3, 20, 50, 1000, sortBy=2))
     # 行业情况
     print(sina.getIndustryInfo())
+
+    # 最新财报
+    print(ball.getSymbolReport()[1])
