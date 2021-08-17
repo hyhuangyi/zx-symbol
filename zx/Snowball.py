@@ -2,7 +2,6 @@ import time
 import json
 import pyttsx3
 import datetime
-import efinance as ef
 import pysnowball as ball
 import util.HttpRequestUtil as http
 from prettytable import PrettyTable
@@ -253,6 +252,7 @@ def lookZhHold(zh='ZH010389'):
 # 获取财报
 # date 指定日期公布的财报 当date为None查所有公布的财报
 def getSymbolReport(date=None, sortBy=1):
+    import efinance as ef
     if sortBy == 1:
         sort = '归属净利润'
     else:
