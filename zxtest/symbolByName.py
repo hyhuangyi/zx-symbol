@@ -15,7 +15,6 @@ def printComment(symbol):
 kg = True
 # kg = False
 name = '安泰科技'
-# name = '天顺风能'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
@@ -28,6 +27,8 @@ if __name__ == '__main__':
 
         # 盘口信息
         print(ball.panKou(symbol)[1])
+
+        # print(ball.getSymbolReport('2021-08-18')[1])
     else:
 
         # 评论
