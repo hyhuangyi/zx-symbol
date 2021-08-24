@@ -15,6 +15,7 @@ def printComment(symbol):
 kg = True
 # kg = False
 name = '安泰科技'
+name = 'st贵人'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
