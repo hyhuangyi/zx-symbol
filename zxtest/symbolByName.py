@@ -1,6 +1,8 @@
 import zx.Snowball as ball
 import zx.SymbolStore as store
 import zx.Sina as sina
+import pyttsx3
+import time
 
 
 # 打印评论
@@ -12,10 +14,23 @@ def printComment(symbol):
             print(d)
 
 
+def play(symbol='603555'):
+    engine = pyttsx3.init()
+    engine.setProperty('rate', 250)
+    shou= ball.panKou(symbol)[0]['data']['sc1'] / 100
+    jia = ball.panKou(symbol)[0]['data']['sp1']
+    engine.say(str(jia)+"元,"+str(shou) + "手")
+    engine.runAndWait()
+    engine.stop()
+    return jia,shou
+
+
 kg = True
 # kg = False
-name = '安泰科技'
-name = 'st贵人'
+name = '陕西黑猫'
+# name = 'st贵人'
+# name = '五粮液'
+
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
@@ -29,7 +44,7 @@ if __name__ == '__main__':
         # 盘口信息
         print(ball.panKou(symbol)[1])
 
-        # print(ball.getSymbolReport('2021-08-18')[1])
+        # print(ball.getSymbolReport('2021-08-31')[1])
     else:
 
         # 评论
@@ -40,3 +55,7 @@ if __name__ == '__main__':
 
         # 行业情况
         # print(sina.getIndustryInfo())
+
+    # while 1:
+    #     # time.sleep(2)
+    #     print(play())

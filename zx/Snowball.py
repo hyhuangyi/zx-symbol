@@ -265,7 +265,11 @@ def getSymbolReport(date=None, sortBy=1):
         temp = {}
         temp['symbol'] = symbol = a[0]
         temp['name'] = name = a[1]
-        day = str(datetime.datetime.strptime(a[2], '%Y-%m-%d %H:%M:%S').date())
+        if a[2] is not None:
+            day = str(datetime.datetime.strptime(a[2], '%Y-%m-%d %H:%M:%S').date())
+        else:
+            day = None
+
         temp['day'] = day
         temp['profit'] = profit = round(a[7] / 100000000, 2)
         temp['yearOnYear'] = yearOnYear = round(a[8], 2)
