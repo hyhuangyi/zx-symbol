@@ -17,20 +17,19 @@ def printComment(symbol):
 def play(symbol='603555'):
     engine = pyttsx3.init()
     engine.setProperty('rate', 250)
-    shou= ball.panKou(symbol)[0]['data']['sc1'] / 100
+    shou = ball.panKou(symbol)[0]['data']['sc1'] / 100
     jia = ball.panKou(symbol)[0]['data']['sp1']
-    engine.say(str(jia)+"元,"+str(shou) + "手")
+    engine.say(str(jia) + "元," + str(shou) + "手")
     engine.runAndWait()
     engine.stop()
-    return jia,shou
+    return jia, shou
 
 
 kg = True
 # kg = False
-name = '陕西黑猫'
-# name = 'st贵人'
-# name = '五粮液'
 
+name = '陕西黑猫'
+# name = '天下秀'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
@@ -58,4 +57,4 @@ if __name__ == '__main__':
 
     # while 1:
     #     # time.sleep(2)
-    #     print(play())
+    #     print(play('600176'))
