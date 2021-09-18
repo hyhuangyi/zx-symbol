@@ -1,6 +1,7 @@
 import zx.Snowball as ball
 import zx.SymbolStore as store
 import zx.Sina as sina
+import zx.GuoRen as guoRen
 import pyttsx3
 import time
 
@@ -45,7 +46,8 @@ if __name__ == '__main__':
         # 盘口信息
         print(ball.panKou(symbol)[1])
 
-        # print(ball.getSymbolReport('2021-08-31')[1])
+        # print(guoRen.getGuoRenInfo("跌停")[1])
+
     else:
 
         # 评论
@@ -57,6 +59,6 @@ if __name__ == '__main__':
         # 行业情况
         # print(sina.getIndustryInfo())
 
-    # while 1:
-    #     # time.sleep(2)
-    #     print(play('600176'))
+        # 财报
+        # print(ball.getSymbolReport('2021-08-31')[1])
+
