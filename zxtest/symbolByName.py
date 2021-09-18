@@ -28,8 +28,10 @@ def play(symbol='603555'):
 kg = True
 # kg = False
 
-name = '陕西黑猫'
-# name = '天下秀'
+name = '五粮液'
+name = '宝丰能源'
+# name = '广汇能源'
+# name = '陕西黑猫'
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
