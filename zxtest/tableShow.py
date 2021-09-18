@@ -1,5 +1,6 @@
 import zx.Sina as sina
 import zx.Snowball as ball
+import zx.GuoRen as guoRen
 import util.SysUtil as sysUtil
 
 date = sysUtil.today()
@@ -32,3 +33,6 @@ if __name__ == '__main__':
 
     # 最新财报
     print(ball.getSymbolReport()[1])
+
+    # 智能小果
+    print(guoRen.getGuoRenInfo()[1])
