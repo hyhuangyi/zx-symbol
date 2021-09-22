@@ -22,7 +22,7 @@ if __name__ == '__main__':
         for r in arr:
             symbol = r['symbol']
             percent = r['percent']
-            if abs(percent) > 3:
+            if abs(percent) > 5:
                 notifyUtil.send_ding_message(symbol + "-->" + str(percent) + "%", False)
             res.append(symbol + '->' + str(percent))
         print(res)

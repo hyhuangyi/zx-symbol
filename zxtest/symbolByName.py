@@ -30,9 +30,11 @@ kg = True
 # kg = False
 
 name = '五粮液'
-name = '宝丰能源'
-# name = '广汇能源'
-# name = '陕西黑猫'
+name = '鸿达兴业'
+# name = '常熟汽饰'
+# name = '诺力股份'
+# name = '贵州茅台'
+
 
 if __name__ == '__main__':
     symbol = store.get_symbol_by_name(name)
