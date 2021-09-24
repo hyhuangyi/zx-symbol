@@ -29,11 +29,14 @@ def play(symbol='603555'):
 kg = True
 # kg = False
 
-name = '五粮液'
+name = '贵州茅台'
 name = '鸿达兴业'
-# name = '常熟汽饰'
-# name = '诺力股份'
-# name = '贵州茅台'
+# name = '仁和药业'
+# name = '川金诺'
+# name = '江南化工'
+# name = '焦作万方'
+# name = '五粮液'
+# name = 'st贵人'
 
 
 if __name__ == '__main__':
