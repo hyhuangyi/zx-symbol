@@ -29,14 +29,10 @@ def play(symbol='603555'):
 kg = True
 # kg = False
 
-name = '贵州茅台'
-name = '鸿达兴业'
-# name = '仁和药业'
-# name = '川金诺'
-# name = '江南化工'
-# name = '焦作万方'
-# name = '五粮液'
-# name = 'st贵人'
+# 贵州茅台  五粮液
+# 川金诺   鸿达兴业  诺力股份  彩虹股份   仁和药业  徐工机械
+name = '五粮液'
+name = '诺力股份'
 
 
 if __name__ == '__main__':
@@ -52,6 +48,7 @@ if __name__ == '__main__':
         print(ball.panKou(symbol)[1])
 
         # print(guoRen.getGuoRenInfo("跌停")[1])
+        # print(str(len(guoRen.getGuoRenInfo("涨停")[0]))+":"+str(len(guoRen.getGuoRenInfo("跌停")[0])))
 
     else:
 
@@ -66,4 +63,3 @@ if __name__ == '__main__':
 
         # 财报
         # print(ball.getSymbolReport('2021-08-31')[1])
-
