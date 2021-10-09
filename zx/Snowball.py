@@ -234,7 +234,7 @@ def playSymbols(symbols):
 
 
 # 雪球组合持仓
-def lookZhHold(zh='ZH010389'):
+def lookZhHold(zh='ZH2553686'):
     import requests
     html = requests.get(const.xq_user_hold + zh, headers=const.HEADERS)
     data = html.text
