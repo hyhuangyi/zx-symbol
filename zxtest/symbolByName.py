@@ -29,9 +29,9 @@ def play(symbol='603555'):
 kg = True
 # kg = False
 
-# 贵州茅台  五粮液  爱康科技
+# 贵州茅台  五粮液   st贵人
 # 鸿达兴业  潍柴动力  彩虹股份   徐工机械
-name = '潍柴动力'
+name = '鸿达兴业'
 
 
 if __name__ == '__main__':
