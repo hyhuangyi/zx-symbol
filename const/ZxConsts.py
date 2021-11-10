@@ -16,7 +16,7 @@ dingding_urL = "https://oapi.dingtalk.com/robot/send?access_token=31d756dc11a9fa
 dingding_secret = "SECf495fcaaf44bfae5bb95eee177adf9545d3ac4ae670920bc607d46514ff6d274"
 
 # 雪球token
-xq_token = 'xq_a_token=16fb07021c1bb84e6b07fa834f31ebe004e33a1d;'
+xq_token = 'xq_a_token=7c1fff83c81f450e03430aa52bd53c2c8d1e7831;'
 
 # 节假日查询
 is_holiday = 'http://tool.bitefu.net/jiari/'

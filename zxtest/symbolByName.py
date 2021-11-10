@@ -27,11 +27,11 @@ def play(symbol='603555'):
 
 
 kg = True
-# kg = False
+kg = False
 
-# 贵州茅台  五粮液   潍柴动力
-# 鸿达兴业   华工科技
-name = '华工科技'
+# 贵州茅台  五粮液   潍柴动力  今世缘
+# 鸿达兴业   中泰化学  st贵人
+name = '丽人丽妆'
 
 
 if __name__ == '__main__':
@@ -45,6 +45,12 @@ if __name__ == '__main__':
 
         # 盘口信息
         print(ball.panKou(symbol)[1])
+        # print(ball.pickSymbols(2, 5, 1.2, 10, 1, 20,
+        #                        3, 20, 50, 1000, sortBy=2))
+
+
+        # 财报
+        # print(ball.getSymbolReport('2021-10-30')[1])
 
         # print(guoRen.getGuoRenInfo("跌停")[1])
         # print(str(len(guoRen.getGuoRenInfo("涨停")[0]))+":"+str(len(guoRen.getGuoRenInfo("跌停")[0])))
@@ -60,5 +66,4 @@ if __name__ == '__main__':
         # 行业情况
         # print(sina.getIndustryInfo())
 
-        # 财报
-        # print(ball.getSymbolReport('2021-08-31')[1])
+
