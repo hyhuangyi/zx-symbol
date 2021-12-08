@@ -29,9 +29,9 @@ def play(symbol='603555'):
 kg = True
 kg = False
 
-# 贵州茅台  五粮液   潍柴动力  今世缘
-# 鸿达兴业   中泰化学  st贵人
-name = '丽人丽妆'
+# 贵州茅台  五粮液   口子窖  今世缘
+# 鸿达兴业   明德生物  三元股份  紫光股份
+name = '三元股份'
 
 
 if __name__ == '__main__':
@@ -56,7 +56,6 @@ if __name__ == '__main__':
         # print(str(len(guoRen.getGuoRenInfo("涨停")[0]))+":"+str(len(guoRen.getGuoRenInfo("跌停")[0])))
 
     else:
-
         # 评论
         printComment(symbol)
 
