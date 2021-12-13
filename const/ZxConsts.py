@@ -3,7 +3,7 @@ mysql_host = "150.158.86.218"
 mysql_port = 3306
 mysql_user = "root"
 mysql_password = "zxadmin"
-mysql_db = "huang"
+mysql_db = "zx"
 
 # redis配置
 redis_host = "150.158.86.218"

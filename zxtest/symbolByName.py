@@ -27,11 +27,11 @@ def play(symbol='603555'):
 
 
 kg = True
-kg = False
+# kg = False
 
 # 贵州茅台  五粮液   口子窖  今世缘
 # 鸿达兴业   明德生物  三元股份  紫光股份
-name = '三元股份'
+name = '海容冷链'
 
 
 if __name__ == '__main__':
