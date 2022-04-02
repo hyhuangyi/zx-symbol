@@ -21,3 +21,7 @@ def getIndustryInfo():
              str(round(float(arr[9]), 2)) + ' %', round(float(arr[10]), 2), ])
     res = table.get_string(sortby="涨跌幅", reversesort=True)
     return res
+
+
+if __name__ == '__main__':
+    print(getIndustryInfo())
