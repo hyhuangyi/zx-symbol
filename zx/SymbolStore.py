@@ -74,3 +74,5 @@ def get_symbol_by_name(name):
         return lists[0][1]
     else:
         return None
+if __name__ == '__main__':
+    print(saveAllSymbol())

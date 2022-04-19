@@ -56,7 +56,8 @@ if __name__ == '__main__':
 
     else:
         # 评论
-        printComment(symbol)
+        # printComment(symbol)
+        print(ball.getSymbolReport('2022-04-20',sortBy=2)[1])
 
         # 组合持仓
         # print(ball.lookZhHold())
