@@ -30,7 +30,7 @@ kg = True
 kg = False
 
 # 鸿达兴业  三元股份   海容冷链   紫光股份
-name = '大东方'
+name = '诺德股份'
 
 
 if __name__ == '__main__':
@@ -56,8 +56,9 @@ if __name__ == '__main__':
 
     else:
         # 评论
-        # printComment(symbol)
-        print(ball.getSymbolReport('2022-04-20',sortBy=2)[1])
+        printComment(symbol)
+
+        # print(ball.getSymbolReport('2022-08-11',sortBy=2)[1])
 
         # 组合持仓
         # print(ball.lookZhHold())
