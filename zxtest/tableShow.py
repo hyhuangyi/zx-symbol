@@ -4,7 +4,7 @@ import zx.GuoRen as guoRen
 import util.SysUtil as sysUtil
 
 date = sysUtil.today()
-symbol = '000969'
+symbol = '002587'
 
 if __name__ == '__main__':
     # 实时信息
@@ -35,4 +35,4 @@ if __name__ == '__main__':
     print(ball.getSymbolReport()[1])
 
     # 智能小果
-    print(guoRen.getGuoRenInfo()[1])
+    # print(guoRen.getGuoRenInfo()[1])

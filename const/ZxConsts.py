@@ -16,7 +16,7 @@ dingding_urL = "https://oapi.dingtalk.com/robot/send?access_token=31d756dc11a9fa
 dingding_secret = "SECf495fcaaf44bfae5bb95eee177adf9545d3ac4ae670920bc607d46514ff6d274"
 
 # 雪球token
-xq_token = 'xq_a_token=866b521f244149657c1ea35d9a21bf28afeb6ad8;'
+xq_token = 'xq_a_token=4bb7fcf9083aaf7db23e4ab22ad786d261806fe3;'
 
 # 节假日查询
 is_holiday = 'http://tool.bitefu.net/jiari/'
@@ -28,7 +28,7 @@ sina_bk = 'http://vip.stock.finance.sina.com.cn/q/view/newSinaHy.php'
 guo_ren = "https://guorn.com/language/query"
 
 # 雪球实时数据
-xq_list = 'https://xueqiu.com/service/v5/stock/screener/quote/list?page=1&size=6000&order=asc&order_by=current_year_percent&market=CN&type=sh_sz'
+xq_list = 'https://xueqiu.com/service/v5/stock/screener/quote/list?page=1&size=5000&order=asc&order_by=current_year_percent&market=CN&type=sh_sz'
 # 龙虎榜
 xq_long_hu_bang = 'https://xueqiu.com/service/v5/stock/hq/longhu'
 # 评论

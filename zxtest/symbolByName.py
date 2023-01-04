@@ -30,7 +30,7 @@ kg = True
 kg = False
 
 # 鸿达兴业  三元股份   海容冷链   紫光股份
-name = '诺德股份'
+name = '格力地产'
 
 
 if __name__ == '__main__':
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         print(ball.realTimeData(symbol)[1])
 
         # 主动资金信息
-        print(ball.capitalFlow(symbol, count=15)[1])
+        print(ball.capitalFlow(symbol, count=150)[1])
 
         # 盘口信息
         print(ball.panKou(symbol)[1])
