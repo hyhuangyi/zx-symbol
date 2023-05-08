@@ -30,7 +30,7 @@ kg = True
 # kg = False
 
 # 鸿达兴业  三元股份   海容冷链   紫光股份
-name = '格力地产'
+name = '五粮液'
 
 
 if __name__ == '__main__':
