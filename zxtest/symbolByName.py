@@ -27,7 +27,7 @@ def play(symbol='603555'):
 
 
 kg = True
-kg = False
+# kg = False
 
 # 鸿达兴业  三元股份   海容冷链   紫光股份
 name = '格力地产'
